@@ -1,0 +1,25 @@
+name: wazuh
+
+include:
+  - ${WAZUH_DOCKER:?FOO}
+  - ../testserver/docker-compose.yml
+
+services:
+  wazuh.agent:
+    build:
+      context: "containers/wazuh-agent"
+  # syslog:
+  #   image: lscr.io/linuxserver/syslog-ng:latest
+  #   hostname: wazuh.syslog
+  #   environment:
+  #     - PUID=1000
+  #     - PGID=1000
+  #     - TZ=Etc/UTC
+  #     - LOG_TO_STDOUT= #optional
+  #   volumes:
+  #     - ./containers/syslog-ng/files/config:/config
+  #   ports:
+  #     - 5514:5514/udp
+  #     - 6514:6514/tcp
+  #     - 6601:6601/tcp
+  #   restart: unless-stopped
