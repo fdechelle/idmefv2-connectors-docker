@@ -1,0 +1,12 @@
+
+services:
+  testserver:
+    container_name: "testserver"
+    build:
+      context: "containers/testserver"
+    ports:
+      - 9999:9999/tcp
+    volumes:
+      - type: "bind"
+        source: "${IDMEFV2_CONNECTORS_GIT}"
+        target: "/idmefv2-connectors"
