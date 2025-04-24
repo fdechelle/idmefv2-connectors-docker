@@ -21,4 +21,5 @@ services:
       - type: "bind"
         source: "${IDMEFV2_CONNECTORS_GIT}"
         target: "/idmefv2-connectors"
-    entrypoint: "/entrypoint-debug.sh"
+#    entrypoint: "/entrypoint-debug.sh"
+    entrypoint: "/entrypoint.sh"
