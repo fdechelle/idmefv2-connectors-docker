@@ -8,18 +8,17 @@ services:
   wazuh.agent:
     build:
       context: "containers/wazuh-agent"
-  # syslog:
-  #   image: lscr.io/linuxserver/syslog-ng:latest
-  #   hostname: wazuh.syslog
-  #   environment:
-  #     - PUID=1000
-  #     - PGID=1000
-  #     - TZ=Etc/UTC
-  #     - LOG_TO_STDOUT= #optional
-  #   volumes:
-  #     - ./containers/syslog-ng/files/config:/config
-  #   ports:
-  #     - 5514:5514/udp
-  #     - 6514:6514/tcp
-  #     - 6601:6601/tcp
-  #   restart: unless-stopped
+
+  wazuh.idmefv2:
+    build:
+      context: "containers/wazuh-idmefv2"
+    ports:
+      - 5678:5678/tcp
+    volumes:
+      - type: "volume"
+        source: "wazuh_logs"
+        target: "/var/ossec/logs"
+      - type: "bind"
+        source: "${IDMEFV2_CONNECTORS_GIT}"
+        target: "/idmefv2-connectors"
+    entrypoint: "/entrypoint-debug.sh"

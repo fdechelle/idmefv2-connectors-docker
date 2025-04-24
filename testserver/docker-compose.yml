@@ -1,7 +1,6 @@
 
 services:
-  testserver:
-    container_name: "testserver"
+  testserver.idmefv2:
     build:
       context: "containers/testserver"
     ports:
