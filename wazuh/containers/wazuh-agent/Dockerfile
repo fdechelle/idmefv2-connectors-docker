@@ -10,6 +10,7 @@ RUN mkdir /test
 
 COPY ./files/ossec.conf /var/ossec/etc
 
-COPY --chmod=0755 ./files/entrypoint.sh /
+COPY --chmod=0755 ./files/test-wazuh-connector.sh /
 
-ENTRYPOINT [ "/entrypoint.sh" ]
+COPY --chmod=0755 ./files/entrypoint.sh /
+CMD [ "/entrypoint.sh" ]

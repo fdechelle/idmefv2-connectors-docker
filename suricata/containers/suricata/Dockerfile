@@ -20,5 +20,7 @@ COPY --chown=suricata:suricata ./files/suricata.yaml /etc/suricata
 ARG SURICATA_CONNECTOR_CONFIG_FILE=./files/suricata-idmefv2.conf
 COPY ${SURICATA_CONNECTOR_CONFIG_FILE} /etc/suricata-idmefv2.conf
 
+COPY --chmod=0755 ./files/test-suricata-connector.sh /
+
 COPY --chmod=0755 ./files/entrypoint.sh /
 CMD [ "/entrypoint.sh" ]
